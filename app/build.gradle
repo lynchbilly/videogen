@@ -1,0 +1,33 @@
+plugins {
+    id 'com.android.application'
+    id 'com.chaquo.python'
+}
+
+android {
+    compileSdkVersion 34
+    defaultConfig {
+        applicationId "org.example.wav2lipchaquopy"
+        minSdkVersion 24
+        targetSdkVersion 34
+        versionCode 1
+        versionName "1.0"
+        ndk {
+            abiFilters "armeabi-v7a", "arm64-v8a"
+        }
+    }
+}
+
+python {
+    buildPython "3.8"
+    pip {
+        install "numpy"
+        install "torch"
+        install "opencv-python"
+        // Add other Wav2Lip dependencies as needed
+    }
+}
+
+dependencies {
+    implementation 'com.chaquo.python:gradle:12.0.0'
+    // ... other dependencies
+}
